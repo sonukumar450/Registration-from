@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="registration.css">
+    <script>
+         async function display() {
+            var name = document.getElementById("t1").value;
+            var email = document.getElementById("t2").value;
+            var password = document.getElementById("t3").value;
+            var number = document.getElementById("t4").value;
+            var gender = document.querySelector('input[name="Gender"]:checked');
+            if (!gender) {
+                alert("Please select gender");
+                return;
+            }
+            var dob = document.getElementById("t6").value;
+            var city = document.getElementById("t7").value;
+            var state = document.getElementById("t8").value;
+            var pincode = document.getElementById("t9").value;
+            var address = document.getElementById("t10").value;
+
+
+
+            var data = {
+                name: name,
+                email: email,
+                password: password,
+                number: number,
+                gender: gender.value,
+                dob: dob,
+                city: city,
+                state: state,
+                pincode: pincode,
+                address: address
+
+            }
+            try {
+                var response = await fetch("http://localhost:8080/api/registration/save", {
+                    method: "post",
+                    headers: {
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+
+
+                });
+
+
+                if (response.ok) {
+                    alert("Registration Successful!");
+
+                    document.querySelector(".container").reset();
+
+
+                }
+                else {
+                    alert("Registration Failed!");
+                }
+            }
+
+            catch (error) {
+                alert("Server Connection failed!");
+                console.log(error);
+            }
+
+
+        }
+        function showPassword() {
+            var password = document.getElementById("t3");
+            if (password.type == "password") {
+                password.type = "text";
+                document.getElementById("btn").innerHTML = "Hide";
+
+            }
+            else {
+                password.type = "password";
+                document.getElementById("btn").innerHTML = "show";
+            }
+
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <h1>Registration form</h1>
+    <form class="container">
+        <label>Enter the Name:</label>
+        <input type="text" id="t1" placeholder="Enter the name"><br><br>
+        <label>Enter the Email:</label>
+        <input type="email" id="t2" placeholder="Enter the email"><br><br>
+        <label>Enter the Password:</label>
+        <div class="password-box">
+            <input type="password" id="t3" placeholder="Enter Password">
+
+            <span id="btn" onclick="showPassword()">Show</span>
+        </div>
+        <label>Enter the Number:</label>
+        <input type="number" id="t4" placeholder="Enter the number"><br><br>
+        <label>Gender:</label><br>
+        <input type="radio" id="male" name="Gender">:Male<br>
+        <input type="radio" id="female" name="Gender">:Female<br><br>
+        <label>Enter the DOB:</label>
+        <input type="date" id="t6" placeholder="Enter the DOB"><br><br>
+        <label>Enter the City:</label>
+        <input type="text" id="t7" placeholder="Enter the city"><br><br>
+        <label>Enter the State:</label>
+        <select name="state" id="t8">
+            <option value="State">Select State</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Up">Utter Predesh</option>
+            <option value="Karnataka">Karnataka</option>
+        </select><br><br>
+        <label>Enter the PinCode:</label>
+        <input type="text" id="t9" placeholder="Enter the pincode"><br><br>
+        <label>Enter the Address:</label>
+        <input type="text" id="t10" placeholder="Enter the address"><br><br>
+        <div class="btn-center">
+            <button type="button" onclick="display()">Register Now</button>
+        </div>
+
+    </form>
+
+</body>
+
+</html>

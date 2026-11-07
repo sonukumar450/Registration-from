@@ -1,0 +1,94 @@
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: purple;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 4px blue;
+    margin-top: 25px;
+}
+
+.container {
+    background-color: white;
+    width: 650px;
+    margin: 25px auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px blue;
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+input[type="radio"] {
+    margin: 10px;
+}
+
+button {
+    background-color: blueviolet;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: purple;
+}
+
+.btn-center {
+    text-align: center;
+}
+
+.password-box {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.password-box input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 55px;
+    margin-top: 8px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.password-box input:focus {
+    border: 2px solid gray;
+}
+
+.password-box span {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 14px;
+}
